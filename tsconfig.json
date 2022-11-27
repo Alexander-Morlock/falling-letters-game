@@ -1,0 +1,9 @@
+{
+  "extends": "@tsconfig/node12/tsconfig.json",
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "lib": ["es6", "dom"],
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
