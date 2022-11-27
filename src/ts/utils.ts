@@ -35,8 +35,8 @@ export function setTextValue(
 
 export function setIntervalCallback(
   callback: () => void,
-  sessionMs = SESSION_TIME_SECONDS * 1000,
-  ms = TIMER_REDUCING_INTERVAL_SECONDS * 1000
+  ms = TIMER_REDUCING_INTERVAL_SECONDS * 1000,
+  sessionMs = SESSION_TIME_SECONDS * 1000
 ) {
   const interval = setInterval(callback, ms)
 
