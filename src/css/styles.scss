@@ -1,15 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+@import 'total';
+@import 'game';
+
 body {
   padding: 0;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
 }
 
-.container {
-  background: linear-gradient(to bottom, #000000 0%, #5d34cf 100%);
-  min-height: 300px;
-  display: flex;
+.heading {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #7b7b7b;
 }
 
-.golden {
-  background: #CF8F21;
-  background: linear-gradient(to left, #cf8f21 0%, #cfab34 25%, #fff9cf 45%, #cf8f21 55%, #cfab34 76%, #fff9cf 100%);
+button {
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: #e2e2e2;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #dbdbdb;
+  }
+
+  &:active {
+    background-color: #a5a5a5;
+  }
+}
+
+.hidden {
+  display: none;
 }

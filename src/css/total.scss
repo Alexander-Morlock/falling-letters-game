@@ -1,0 +1,11 @@
+.total {
+  background: linear-gradient(to bottom, #000000 0%, #6dcf34 100%);
+  min-height: 300px;
+  display: flex;
+}
+
+.total__score {
+  margin: auto;
+  color: #fff;
+  font-size: 2rem;
+}
