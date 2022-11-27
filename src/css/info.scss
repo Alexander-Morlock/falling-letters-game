@@ -1,0 +1,21 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.info__item {
+  margin: 0;
+  padding: 1rem 2rem;
+  min-width: 12rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+
+  @media (max-width: 570px) {
+    width: 100%;
+    min-width: auto;
+  }
+}

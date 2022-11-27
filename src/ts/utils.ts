@@ -1,4 +1,8 @@
-import { HIDDEN_CLASS_NAME, SESSION_TIME_SECONDS } from './constants'
+import {
+  HIDDEN_CLASS_NAME,
+  SESSION_TIME_SECONDS,
+  TIMER_REDUCING_INTERVAL_SECONDS,
+} from './constants'
 
 export function setVisibility(
   activeElement: Element,
@@ -8,19 +12,34 @@ export function setVisibility(
   hiddenElements.forEach((element) => element.classList.add(HIDDEN_CLASS_NAME))
 }
 
-function waitSeconds(seconds: number) {
-  return new Promise((res) => setTimeout(res, seconds * 1000))
+function waitMilliSeconds(ms: number) {
+  return new Promise((res) => setTimeout(res, ms))
 }
 
 export async function callbackStack(
   callbacks: (() => void)[],
-  sessionTimeSeconds = SESSION_TIME_SECONDS
+  sessionMs = SESSION_TIME_SECONDS * 1000
 ) {
-  callbacks[0]()
-  if (callbacks.length < 2) return
-
-  for (let i = 1; i < callbacks.length; i++) {
-    await waitSeconds(sessionTimeSeconds)
+  for (let i = 0; i < callbacks.length; i++) {
     callbacks[i]()
+    await waitMilliSeconds(sessionMs)
   }
+}
+
+export function setTextValue(
+  element: HTMLParagraphElement | HTMLSpanElement,
+  value: string | number
+) {
+  element.textContent = String(value)
+}
+
+export function setIntervalCallback(
+  callback: () => void,
+  sessionMs = SESSION_TIME_SECONDS * 1000,
+  ms = TIMER_REDUCING_INTERVAL_SECONDS * 1000
+) {
+  const interval = setInterval(callback, ms)
+
+  if (!sessionMs) return
+  setTimeout(() => clearInterval(interval), sessionMs)
 }

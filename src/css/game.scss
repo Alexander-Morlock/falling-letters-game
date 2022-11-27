@@ -1,6 +1,20 @@
-.game {
+.game-wrapper {
   background: linear-gradient(to bottom, #000000 0%, #5d34cf 100%);
-  min-height: 300px;
+}
+
+.game {
+  margin: 0 auto;
+  min-height: 500px;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+}
+
+.game__info {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
 }
 
 .golden {

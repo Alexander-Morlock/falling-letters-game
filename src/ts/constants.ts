@@ -1,3 +1,6 @@
 export const HIDDEN_CLASS_NAME = 'hidden'
 
 export const SESSION_TIME_SECONDS = 20
+
+export const TIMER_REDUCING_INTERVAL_SECONDS = 0.05
+export const TIMER_DECIMAL_FRACTION_LENGTH = 2
