@@ -1,11 +1,9 @@
-import {
-  LETTER_INIT_TOP_PX, PROBABILITY_OF_GOLDEN_LETTER
-} from '../constants'
+import { LETTER_INIT_TOP_PX, PROBABILITY_OF_GOLDEN_LETTER } from '../constants'
 import { game } from '../domElements'
 import {
   generateLeftPosition,
   getFallingTimeSecinds,
-  getLetterShiftPx
+  getLetterShiftPx,
 } from '../utils'
 
 export class Letter {
@@ -39,6 +37,10 @@ export class Letter {
     el.style.setProperty('top', `${this._topPx}px`)
     el.style.setProperty('left', `${this._leftPercent}%`)
     return el
+  }
+
+  get symbol() {
+    return this._symbol
   }
 
   get isGolden() {

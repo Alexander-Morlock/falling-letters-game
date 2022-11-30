@@ -28,7 +28,9 @@ export function createLetter(symbol: string, total: Total) {
   }
 
   function onKeyDown(evt: KeyboardEvent) {
-    const isMatch = evt.key.toLowerCase() === symbol.toLowerCase()
+    const isMatch =
+      evt.code === `Key${letter?.symbol}` ||
+      evt.key.toLowerCase() === symbol.toLowerCase()
 
     if (isMatch) {
       letter?.isGolden && total.increaseGoldenMatches()
