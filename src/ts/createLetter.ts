@@ -12,7 +12,7 @@ export function createLetter(symbol: string, total: Total) {
   const letterTimer = new Timer({
     ticker: {
       timeSeconds: letter.fallingTime,
-      reduceStepSeconds: LETTER_SHIFT_TIME_SECONDS,
+      stepSeconds: LETTER_SHIFT_TIME_SECONDS,
       callback: letter.shiftDown,
     },
     callbackQueue: {

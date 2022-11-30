@@ -7,7 +7,7 @@ import { startGame } from './ts/startGame'
 import { stopGame } from './ts/stopGame'
 import { Timer } from './ts/classes/timer'
 import { Total } from './ts/classes/total'
-import { setTextContent } from './ts/utils'
+import { generateRandomSet, setTextContent } from './ts/utils'
 
 initGame()
 const total = new Total(({ result }) => setTextContent(infoScore, result))

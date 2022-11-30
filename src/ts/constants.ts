@@ -16,3 +16,5 @@ export const LETTER_INIT_TOP_PX = 80
 export const LETTER_HEIGHT_PX = 50
 
 export const GOLDEN_LETTER_MULTIPLIER = 2
+
+export const LETTERS_CREATING_INTERVAL_SECONDS = 1

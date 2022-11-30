@@ -14,19 +14,24 @@ export class Total {
     this.increaseGoldenMatches = this.increaseGoldenMatches.bind(this)
   }
 
+  private _runOnChangeCallback() {
+    this._onChangeCallback && this._onChangeCallback(this)
+  }
+
   increaseSimpleMatches() {
     this._simpleMatches++
-    this._onChangeCallback && this._onChangeCallback(this)
+    this._runOnChangeCallback()
   }
 
   increaseGoldenMatches() {
     this._goldenMatches++
-    this._onChangeCallback && this._onChangeCallback(this)
+    this._runOnChangeCallback()
   }
 
   reset() {
     this._goldenMatches = 0
     this._simpleMatches = 0
+    this._runOnChangeCallback()
   }
 
   get result() {

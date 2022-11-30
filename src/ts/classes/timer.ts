@@ -7,7 +7,7 @@ type CallbackQueue = {
 
 type Ticker = {
   timeSeconds: number
-  reduceStepSeconds: number
+  stepSeconds: number
   callback: (t: Timer) => void
 }
 
@@ -57,7 +57,7 @@ export class Timer {
 
   private _reduceTickerTime() {
     if (!this._ticker) return
-    this._ticker.timeSeconds -= this._ticker.reduceStepSeconds
+    this._ticker.timeSeconds -= this._ticker.stepSeconds
   }
 
   public async runCallbackQueue() {
@@ -75,7 +75,7 @@ export class Timer {
     this._tickerInterval = window.setInterval(() => {
       this._ticker?.callback(this)
       this._reduceTickerTime()
-    }, this._ticker.reduceStepSeconds * 1000)
+    }, this._ticker.stepSeconds * 1000)
 
     this._tickerTimeout = window.setTimeout(
       this.stop,
