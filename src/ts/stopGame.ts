@@ -4,14 +4,11 @@ import {
   totalScore,
   totalWrapper,
 } from './domElements'
-import { Timer } from './timer'
-import { setTextValue, setVisibility } from './utils'
+import { Total } from './classes/total'
+import { setTextContent, setVisibility } from './utils'
 
-export function stopGame(t?: Timer) {
-  console.log('Game is stopped!')
-
-  setTextValue(totalScore, Math.floor(Math.random() * 100))
+export function stopGame(total: number) {
+  setTextContent(totalScore, total)
   setVisibility(totalWrapper, gameWrapper)
   buttonStart.disabled = false
-  t && t.stop()
 }

@@ -17,4 +17,4 @@ yarn build / npm run build
 
 ## Development
 
-yarn watch / npm run watch
+yarn dev / npm run dev

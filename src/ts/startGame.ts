@@ -1,21 +1,36 @@
-import { SESSION_TIME_SECONDS } from './constants'
-import { buttonStart, infoTimer } from './domElements'
+import {
+  SESSION_TIME_SECONDS,
+  TIMER_REDUCING_INTERVAL_SECONDS,
+} from './constants'
+import { createLetter } from './createLetter'
+import { buttonStart, infoScore, infoTimer } from './domElements'
 import { initGame } from './initGame'
-import { Timer } from './timer'
-import { setTextValue } from './utils'
+import { Timer } from './classes/timer'
+import { Total } from './classes/total'
+import { setTextContent } from './utils'
 
-export function startGame() {
-  console.log('Game is started!')
+export function startGame(total: Total) {
   initGame()
   buttonStart.disabled = true
 
   const timer = new Timer({
     ticker: {
       timeSeconds: SESSION_TIME_SECONDS,
-      reduceStepSeconds: 0.05,
-      callback: (timer) => setTextValue(infoTimer, timer.formattedTickerTime),
+      reduceStepSeconds: TIMER_REDUCING_INTERVAL_SECONDS,
+      callback: (timer) => {
+        setTextContent(infoTimer, timer.formattedTickerTime)
+      },
+    },
+  })
+  const creatingLettersTimer = new Timer({
+    ticker: {
+      timeSeconds: SESSION_TIME_SECONDS,
+      reduceStepSeconds: 1,
+      callback: () => createLetter('A', total),
     },
   })
 
   timer.runTicker()
+  createLetter('A', total)
+  creatingLettersTimer.runTicker()
 }

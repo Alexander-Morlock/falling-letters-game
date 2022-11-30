@@ -1,7 +1,7 @@
-import { TIMER_DECIMAL_FRACTION_LENGTH } from './constants'
+import { TIMER_DECIMAL_FRACTION_LENGTH } from '../constants'
 
 type CallbackQueue = {
-  queue: ((t?: Timer) => void)[]
+  queue: ((t: Timer) => void)[]
   delaySeconds: number
 }
 
@@ -11,10 +11,15 @@ type Ticker = {
   callback: (t: Timer) => void
 }
 
-type Props = {
-  callbackQueue?: CallbackQueue
-  ticker?: Ticker
-}
+type Props =
+  | {
+      callbackQueue: CallbackQueue
+      ticker?: Ticker
+    }
+  | {
+      callbackQueue?: CallbackQueue
+      ticker: Ticker
+    }
 
 export class Timer {
   private _ticker?: Ticker
@@ -65,12 +70,13 @@ export class Timer {
   }
 
   public runTicker() {
-    if (!this._ticker?.timeSeconds) return
+    if (!this._ticker) return
 
     this._tickerInterval = window.setInterval(() => {
       this._ticker?.callback(this)
       this._reduceTickerTime()
     }, this._ticker.reduceStepSeconds * 1000)
+
     this._tickerTimeout = window.setTimeout(
       this.stop,
       this._ticker.timeSeconds * 1000

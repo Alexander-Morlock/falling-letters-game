@@ -8,7 +8,7 @@ export function setVisibility(
   hiddenElements.forEach((element) => element.classList.add(HIDDEN_CLASS_NAME))
 }
 
-export function setTextValue(
+export function setTextContent(
   element: HTMLParagraphElement | HTMLSpanElement,
   value: string | number
 ) {

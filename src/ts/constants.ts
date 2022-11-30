@@ -2,5 +2,17 @@ export const HIDDEN_CLASS_NAME = 'hidden'
 
 export const SESSION_TIME_SECONDS = 20
 
-export const TIMER_REDUCING_INTERVAL_SECONDS = 0.05
+export const TIMER_REDUCING_INTERVAL_SECONDS = 0.1
 export const TIMER_DECIMAL_FRACTION_LENGTH = 2
+
+export const A_ASC_CODE = 65
+export const ALPHABET_LENGTH = 26
+
+export const PROBABILITY_OF_GOLDEN_LETTER = 0.3
+
+export const MAX_LETTER_FALLING_TIME_SECONDS = 5
+export const LETTER_SHIFT_TIME_SECONDS = 0.05
+export const LETTER_INIT_TOP_PX = 80
+export const LETTER_HEIGHT_PX = 50
+
+export const GOLDEN_LETTER_MULTIPLIER = 2

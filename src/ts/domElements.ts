@@ -1,4 +1,8 @@
-export const gameWrapper = document.querySelector('.game') as HTMLDivElement
+export const gameWrapper = document.querySelector(
+  '.game-wrapper'
+) as HTMLDivElement
+
+export const game = document.querySelector('.game') as HTMLDivElement
 
 export const totalWrapper = document.querySelector('.total') as HTMLDivElement
 
