@@ -1,4 +1,13 @@
-import { ALPHABET_LENGTH, A_ASC_CODE, HIDDEN_CLASS_NAME } from './constants'
+import {
+  ALPHABET_LENGTH,
+  A_ASC_CODE,
+  GOLDEN_LETTER_MULTIPLIER,
+  HIDDEN_CLASS_NAME,
+  LETTER_HEIGHT_PX,
+  LETTER_INIT_TOP_PX,
+  LETTER_SHIFT_TIME_SECONDS,
+  MAX_LETTER_FALLING_TIME_SECONDS,
+} from './constants'
 
 export function setVisibility(
   activeElement: Element,
@@ -15,17 +24,31 @@ export function setTextContent(
   element.textContent = String(value)
 }
 
-export function generateRandomSet(firstNumber: number, setLength: number) {
-  const set = new Set<number>()
-  while (set.size < setLength) {
-    const newSetElement = Math.floor(Math.random() * setLength) + firstNumber
-    set.add(newSetElement)
-  }
-  return [...set]
+export function generateRandomizedSet(firstNumber: number, setLength: number) {
+  const arr = [...Array(setLength).keys()].map((x) => x + firstNumber)
+  return arr.sort(() => Math.random() - 0.5)
 }
 
-export function getRandomizedAlphabet() {
-  return generateRandomSet(A_ASC_CODE, ALPHABET_LENGTH).map((asc) =>
+export function generateRandomizedAlphabet() {
+  return generateRandomizedSet(A_ASC_CODE, ALPHABET_LENGTH).map((asc) =>
     String.fromCharCode(asc)
+  )
+}
+
+export function getLetterShiftPx(gameoffsetHeight: number, isGolden: boolean) {
+  return (
+    ((gameoffsetHeight - LETTER_INIT_TOP_PX - LETTER_HEIGHT_PX) /
+      (MAX_LETTER_FALLING_TIME_SECONDS / LETTER_SHIFT_TIME_SECONDS)) *
+    (isGolden ? GOLDEN_LETTER_MULTIPLIER : 1)
+  )
+}
+
+export function generateLeftPosition() {
+  return Math.floor(Math.random() * 5) * 16 + 10
+}
+
+export function getFallingTimeSecinds(isGolden: boolean) {
+  return (
+    MAX_LETTER_FALLING_TIME_SECONDS / (isGolden ? GOLDEN_LETTER_MULTIPLIER : 1)
   )
 }

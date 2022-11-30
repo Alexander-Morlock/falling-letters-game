@@ -9,26 +9,23 @@ export class Total {
     this._goldenMatches = 0
     this._simpleMatches = 0
     this._onChangeCallback = onChangeCallback
-
-    this.increaseSimpleMatches = this.increaseSimpleMatches.bind(this)
-    this.increaseGoldenMatches = this.increaseGoldenMatches.bind(this)
   }
 
-  private _runOnChangeCallback() {
+  private _runOnChangeCallback = () => {
     this._onChangeCallback && this._onChangeCallback(this)
   }
 
-  increaseSimpleMatches() {
+  public increaseSimpleMatches = () => {
     this._simpleMatches++
     this._runOnChangeCallback()
   }
 
-  increaseGoldenMatches() {
+  public increaseGoldenMatches = () => {
     this._goldenMatches++
     this._runOnChangeCallback()
   }
 
-  reset() {
+  public reset = () => {
     this._goldenMatches = 0
     this._simpleMatches = 0
     this._runOnChangeCallback()

@@ -8,7 +8,7 @@ import { buttonStart, infoScore, infoTimer } from './domElements'
 import { initGame } from './initGame'
 import { Timer } from './classes/timer'
 import { Total } from './classes/total'
-import { getRandomizedAlphabet, setTextContent } from './utils'
+import { generateRandomizedAlphabet, setTextContent } from './utils'
 
 export function startGame(total: Total) {
   total.reset()
@@ -31,7 +31,7 @@ export function startGame(total: Total) {
       stepSeconds: LETTERS_CREATING_INTERVAL_SECONDS,
       callback: () => {
         if (!preGeneratedLeters.length) {
-          preGeneratedLeters = getRandomizedAlphabet()
+          preGeneratedLeters = generateRandomizedAlphabet()
         }
         createLetter(preGeneratedLeters.pop() || 'A', total)
       },

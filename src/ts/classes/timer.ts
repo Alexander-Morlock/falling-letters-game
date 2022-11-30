@@ -32,10 +32,6 @@ export class Timer {
     this._tickerTimeout
     this._tickerInterval
     this._callbackQueue = callbackQueue
-
-    this.runCallbackQueue = this.runCallbackQueue.bind(this)
-    this.runTicker = this.runTicker.bind(this)
-    this.stop = this.stop.bind(this)
   }
 
   get tickerTime() {
@@ -46,21 +42,20 @@ export class Timer {
     return this.tickerTime.toFixed(TIMER_DECIMAL_FRACTION_LENGTH)
   }
 
-  public stop() {
+  public stop = () => {
     clearInterval(this._tickerInterval)
     clearTimeout(this._tickerTimeout)
   }
 
-  private _waitMilliSeconds(ms: number) {
-    return new Promise((res) => setTimeout(res, ms))
-  }
+  private _waitMilliSeconds = (ms: number) =>
+    new Promise((res) => setTimeout(res, ms))
 
-  private _reduceTickerTime() {
+  private _reduceTickerTime = () => {
     if (!this._ticker) return
     this._ticker.timeSeconds -= this._ticker.stepSeconds
   }
 
-  public async runCallbackQueue() {
+  public runCallbackQueue = async () => {
     if (!this._callbackQueue) return
 
     for (let i = 0; i < this._callbackQueue.queue.length; i++) {
@@ -69,7 +64,7 @@ export class Timer {
     }
   }
 
-  public runTicker() {
+  public runTicker = () => {
     if (!this._ticker) return
 
     this._tickerInterval = window.setInterval(() => {

@@ -17,11 +17,11 @@ export function createLetter(symbol: string, total: Total) {
     },
     callbackQueue: {
       delaySeconds: MAX_LETTER_FALLING_TIME_SECONDS,
-      queue: [(timer) => timer.runTicker(), eraseLetter],
+      queue: [(timer) => timer.runTicker(), unMountLetter],
     },
   })
 
-  function eraseLetter() {
+  function unMountLetter() {
     letter?.removeFromDOM()
     document.removeEventListener('keydown', onKeyDown)
     letter = null
@@ -35,7 +35,7 @@ export function createLetter(symbol: string, total: Total) {
       !letter?.isGolden && total.increaseSimpleMatches()
 
       letterTimer.stop()
-      eraseLetter()
+      unMountLetter()
     }
   }
 
