@@ -1,5 +1,8 @@
 # Falling Letters Game
 
+## Demo
+http://artofdesign.ru/web/letters/
+
 ## Rules
 
 1. Game starts after pressing start button
