@@ -11,11 +11,11 @@ export const totalScore = document.querySelector(
 ) as HTMLSpanElement
 
 export const infoScore = document.querySelector(
-  '.info--score span'
+  '.info__item--score span'
 ) as HTMLSpanElement
 
 export const infoTimer = document.querySelector(
-  '.info--timer span'
+  '.info__item--timer span'
 ) as HTMLSpanElement
 
 export const buttonStart = document.querySelector(

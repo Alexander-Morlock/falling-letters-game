@@ -47,7 +47,7 @@ export function generateLeftPosition() {
   return Math.floor(Math.random() * 5) * 16 + 10
 }
 
-export function getFallingTimeSecinds(isGolden: boolean) {
+export function getFallingTimeSeconds(isGolden: boolean) {
   return (
     MAX_LETTER_FALLING_TIME_SECONDS / (isGolden ? GOLDEN_LETTER_MULTIPLIER : 1)
   )

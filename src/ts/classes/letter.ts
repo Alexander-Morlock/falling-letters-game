@@ -2,7 +2,7 @@ import { LETTER_INIT_TOP_PX, PROBABILITY_OF_GOLDEN_LETTER } from '../constants'
 import { game } from '../domElements'
 import {
   generateLeftPosition,
-  getFallingTimeSecinds,
+  getFallingTimeSeconds,
   getLetterShiftPx,
 } from '../utils'
 
@@ -18,7 +18,7 @@ export class Letter {
   constructor(symbol: string) {
     this._symbol = symbol
     this._isGolden = Math.random() <= PROBABILITY_OF_GOLDEN_LETTER
-    this._fallingTimeSeconds = getFallingTimeSecinds(this._isGolden)
+    this._fallingTimeSeconds = getFallingTimeSeconds(this._isGolden)
     this._topPx = LETTER_INIT_TOP_PX
     this._leftPercent = generateLeftPosition()
     this._element = this._generateHTML()
