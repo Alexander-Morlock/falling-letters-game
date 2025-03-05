@@ -1,7 +1,7 @@
 # Falling Letters Game
 
 ## Demo
-http://artofdesign.ru/web/letters/
+http://falling-letters.onlinemania.ru/
 
 ## Rules
 
